@@ -1,0 +1,15 @@
+-- see https://gist.github.com/mykolaharmash/51846c538c5703de67ad15e6e3109ba0
+
+function pressFn(mods, key)
+    if key == nil then
+        key = mods
+        mods = {}
+    end
+    return function() hs.eventtap.keyStroke(mods, key, 50) end
+end
+
+function remap(mods, key, pressFn)
+    hs.hotkey.bind(mods, key, pressFn, nil, pressFn)	
+end
+
+return {pressFn, remap}
